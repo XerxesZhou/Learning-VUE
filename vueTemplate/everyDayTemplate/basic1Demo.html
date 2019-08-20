@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .bg{
+            color:red;
+        }
+    </style>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+   <div class="bg">
+        hello world!!{{msg}}{{count}}
+        <div v-html="template"></div>
+        <a v-bind:href="baidu">去百度哦</a>
+        <!-- <a :href="baidu">去百度哦</!--> -->
+        <input type="button" value="提交" v-on:click='submit()'>
+        <!-- <input type="button" value="提交" @:click='submit()'> -->
+   </div>
+   <script>
+       new Vue({
+           el:'.bg',
+           data:{
+               msg:'hello vue!!',
+               count: 0,
+               template:'<div>hello template</div>',
+               baidu:'http://www.baidu.com'
+           },
+           methods:{
+               submit:function(){
+                   this.count++;
+               }
+           }
+       })
+   </script>
+</body>
+</html>
