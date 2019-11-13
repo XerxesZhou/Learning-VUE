@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>Switch的价格是：{{price}}冈，含税价格为：{{priceIndex}}冈，
+            折合人名币：{{priceRMB}}</p>
+        <button v-on:click="btnclick(10000) ">加价10000冈</button>
+    </div>
+    <script>
+        var myapp = new Vue({
+            el: '#app',
+            data: {
+                price: 29980
+            },
+            computed: {
+                priceIndex: {
+                    get: function(){
+                        return Math.round(this.price * 1.08);
+                    },
+                    set: function(value){
+                        this.price = value / 1.08;
+                    }
+                },
+                priceRMB: function(){
+                    return Math.round(this.priceIndex / 16.75);
+                }
+            },
+            methods: {
+                btnclick: function (newprice) {
+                    this.priceIndex = newprice;
+                }
+            }
+        })    
+        myapp.price = 29980;  
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>非父子组件间传值</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child content="Xerxes"></child>
+        <child content="Zhou"></child>
+    </div>
+    <script>
+        Vue.prototype.bus = new Vue()
+        Vue.component('child',{
+            props: {
+                content: String
+            },
+            data: function() {
+                return {
+                    ourContent: this.content
+                }
+            },
+            template: '<div @click="handleClick">{{ourContent}}</div>',
+            methods: {
+                handleClick: function(){
+                    console.log(this.content)
+                    this.bus.$emit('change', this.ourContent)
+                }
+            },
+            mounted: function() {
+                var that = this
+                this.bus.$on('change', function(value){
+                    console.log(value);
+                    that.ourContent = value;
+                })
+            }
+        })
+        var myapp = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+</html>

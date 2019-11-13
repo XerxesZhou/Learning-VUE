@@ -8,6 +8,31 @@
     <script src="../lib/vue.js"></script>
 </head>
 <body>
-    
+    <div id="app">
+        {{ msg }}
+        <p>count:{{count}}</p>
+        <button v-on:click = 'adds'>count++</button>
+        <p v-if='count > 2'>
+            count大于2了
+        </p>
+        <p v-else>
+            count不大于2   
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                msg:'hello vue',
+                count: 0
+            },
+            methods:{
+                adds:function(){
+                    this.count++;
+                }
+            }
+
+        })
+    </script>
 </body>
 </html>

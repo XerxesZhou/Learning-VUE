@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>你喜欢的游戏是:{{mygame}}</p>
+        <button v-for='gn in games' v-on:click="btncliclk(gn)">{{gn}}</button>
+    </div>
+    <script>
+        var myapp = new Vue({
+            el: '#app',
+            data: {
+                mygame: '当前未选择',
+                games: ['超级马里奥','勇者斗恶龙','塞尔达传说','荒野大嫖客','魔界战记']
+            },
+            methods: {
+                btncliclk: function(game){
+                    this.mygame = game;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

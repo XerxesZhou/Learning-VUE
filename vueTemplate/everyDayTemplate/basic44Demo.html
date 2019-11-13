@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>非父子组件间传值</title>
+    <script src="../lib/vue.js"></script>
+    <style>
+        /* .v-enter {
+            opacity: 0;
+        }
+
+        .v-enter-active {
+            transition: opacity 3s;
+        } 默认情况下为v*/
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+            
+        }
+        .enter{
+            transform-origin: left center;
+            animation: bounce-in 1s;
+        }
+        .leave{
+            transform-origin: left center;
+            animation: bounce-in 1s reverse;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <transition>
+            <div v-if="show">
+                hello world
+            </div>
+        </transition> 默认情况下不写name -->
+        <transition name="fade" enter-active-class='active' leave-active-class="leave">
+            <div v-show="show">
+                hello world
+            </div>
+            <div v-if="show">
+                hello world
+            </div>
+        </transition>
+        <button @click="handleClick">切换</button>
+    </div>
+    <script>
+        var myapp = new Vue({
+            el: "#app",
+            data: {
+                show: true
+            },
+            methods: {
+                handleClick: function () {
+                    this.show = !this.show;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

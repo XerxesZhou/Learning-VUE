@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>非父子组件间传值</title>
+    <script src="../lib/vue.js"></script>
+    <link rel="stylesheet" href="../lib/animate.css">
+
+<body>
+    <div id="app">
+        <!-- <transition>
+            <div v-if="show">
+                hello world
+            </div>
+        </transition> 默认情况下不写name -->
+        <transition name="fade" 
+                    enter-active-class='animated swing' 
+                    leave-active-class="animated shake">
+            <div v-if="show ">
+                hello world
+            </div>
+        </transition>
+        <button @click="handleClick">切换</button>
+    </div>
+    <script>
+        var myapp = new Vue({
+            el: "#app",
+            data: {
+                show: true
+            },
+            methods: {
+                handleClick: function () {
+                    this.show = !this.show;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

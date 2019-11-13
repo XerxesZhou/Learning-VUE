@@ -9,27 +9,27 @@
 </head>
 <body>
     <div id="app">
-        {{msg}}
+        <div>{{msg}}</div>
         <p>{{msg1}}</p>
     </div>
     <script>
-       var app =  new Vue({
-           el:'#app',
-           data: {
-               msg:'hello vue!',
-               another:'another hello vue'
-           },
-           watch:{
-               msg:function(newval,oldval){
-                   console.log('newval is:'+newval);
-                   console.log('oldval is:'+oldval);
-               }
-           },
-           computed:{
-               msg1:function (){
-                   return 'computed:'+this.msg;
-               }
-           }
+        var arr = new Vue({
+            el:'#app',
+            data:{
+                msg:'hello vue!',
+                arr:'msg1 he'
+            },
+            watch:{
+                msg:function(newval,oldval){
+                    console.log('newval is'+newval);
+                    console.log('oldval is'+oldval);
+                }
+            },
+            computed:{
+                msg1:function(){
+                    return 'msg='+this.msg+',arr='+this.arr;
+                }
+            }
         })
     </script>
 </body>

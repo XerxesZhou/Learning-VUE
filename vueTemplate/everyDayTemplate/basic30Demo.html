@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <tbody>
+                <tr is="row"></tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        Vue.component('row',{
+            // data:{
+            //     content: 'this is component row '
+            // },子组件的data只能是函数，通过return返回
+            data: function() {
+                return {
+                    content: 'this is contnet'
+                }
+            },
+            //子组件的复用性决定了data不会公用，而是每个子组件独立存储
+            props:[],
+            template: "<tr><td>{{content}}</td></tr>"
+        })
+        var myapp = new Vue({
+            el: "#app",
+            data: {
+
+            }
+        })
+    </script>
+</body>
+</html>
